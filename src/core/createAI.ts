@@ -1,6 +1,6 @@
 import { AIConfig } from "./types";
 
-const validProviders = ["openai", "gemini", "anthropic"];
+export const validProviders = ["openai", "gemini", "anthropic"];
 
 const createAI = (config: AIConfig) => {
   if (!config.apiKey) {
