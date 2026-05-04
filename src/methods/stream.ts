@@ -9,17 +9,26 @@ const stream = async (
   callback: (chunk: string) => void,
   options?: RequestOptions,
 ) => {
-  switch (config.provider) {
-    case "gemini":
-      return streamWithGemini(config.apiKey, prompt, callback, options);
-    case "anthropic":
-      return streamWithAnthropic(config.apiKey, prompt, callback, options);
-    case "openai":
-      return streamWithOpenai(config.apiKey, prompt, callback, options);
-    default:
-      throw new Error(
-        "Provider not supported. Please choose 'openai', 'anthropic' or 'gemini'",
-      );
+  try {
+    switch (config.provider) {
+      case "gemini":
+        return await streamWithGemini(config.apiKey, prompt, callback, options);
+      case "anthropic":
+        return await streamWithAnthropic(
+          config.apiKey,
+          prompt,
+          callback,
+          options,
+        );
+      case "openai":
+        return await streamWithOpenai(config.apiKey, prompt, callback, options);
+      default:
+        throw new Error(
+          "Provider not supported. Please choose 'openai', 'anthropic' or 'gemini'",
+        );
+    }
+  } catch (error: any) {
+    throw new Error(`llmix error [${config.provider}]: ${error.message}`);
   }
 };
 

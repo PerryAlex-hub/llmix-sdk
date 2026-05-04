@@ -33,7 +33,7 @@ const streamWithOpenai = async (
   const client = new OpenAI({ apiKey });
 
   const stream = await client.chat.completions.stream({
-    model: options?.model || "gpt-4o",
+    model: options?.model || "gpt-4",
     messages: [
       {
         role: "system",

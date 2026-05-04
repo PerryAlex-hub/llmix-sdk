@@ -9,10 +9,25 @@
     "dev": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "ai",
+    "openai",
+    "anthropic",
+    "gemini",
+    "llm",
+    "sdk",
+    "nodejs"
+  ],
+  "author": "Ifechukwu Nwokedi Emmanuel",
+  "license": "MIT",
   "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PerryAlex-hub/llmix-sdk"
+  },
   "devDependencies": {
     "@types/node": "^25.6.0",
     "typescript": "^6.0.3"
@@ -20,6 +35,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.92.0",
     "@google/generative-ai": "^0.24.1",
+    "dotenv": "^17.4.2",
     "openai": "^6.35.0"
   }
 }
