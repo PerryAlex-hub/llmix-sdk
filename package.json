@@ -1,6 +1,6 @@
 {
   "name": "llmix",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple unified nodejs SDK for switching between different LLM providers",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -35,7 +35,9 @@
   "dependencies": {
     "@anthropic-ai/sdk": "^0.92.0",
     "@google/generative-ai": "^0.24.1",
+    "@toon-format/toon": "^2.1.0",
     "dotenv": "^17.4.2",
-    "openai": "^6.35.0"
+    "openai": "^6.35.0",
+    "tiktoken": "^1.0.22"
   }
 }

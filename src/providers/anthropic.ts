@@ -1,9 +1,9 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { RequestOptions, AIResponse } from "../core/types";
+import { RequestOptions, AIResponse, PromptInput } from "../core/types";
 
 const chatWithAnthropic = async (
   apiKey: string,
-  prompt: string,
+  prompt: PromptInput,
   options?: RequestOptions,
 ): Promise<AIResponse> => {
   const client = new Anthropic({ apiKey });
@@ -12,7 +12,7 @@ const chatWithAnthropic = async (
     model: options?.model || "claude-sonnet-4-6",
     max_tokens: 1024,
     system: options?.system || "You are a helpful assistant",
-    messages: [{ role: "user", content: prompt }],
+    messages: [{ role: "user", content: typeof prompt === 'string' ? prompt : JSON.stringify(prompt) }],
   });
 
   return {

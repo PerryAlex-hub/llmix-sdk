@@ -1,9 +1,9 @@
 import OpenAI from "openai";
-import { AIResponse, RequestOptions } from "../core/types";
+import { AIResponse, PromptInput, RequestOptions } from "../core/types";
 
 const chatWithOpenai = async (
   apiKey: string,
-  prompt: string,
+  prompt: PromptInput,
   options?: RequestOptions,
 ): Promise<AIResponse> => {
   const client = new OpenAI({ apiKey });
@@ -15,7 +15,7 @@ const chatWithOpenai = async (
         role: "system",
         content: options?.system || "You are a helpful assistant",
       },
-      { role: "user", content: prompt },
+      { role: "user", content: typeof prompt === 'string' ? prompt : JSON.stringify(prompt) },
     ],
   });
 

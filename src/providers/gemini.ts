@@ -1,9 +1,9 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { RequestOptions, AIResponse } from "../core/types";
+import { RequestOptions, AIResponse, PromptInput } from "../core/types";
 
 const chatWithGemini = async (
   apiKey: string,
-  prompt: string,
+  prompt: PromptInput,
   options?: RequestOptions,
 ): Promise<AIResponse> => {
   const client = new GoogleGenerativeAI(apiKey);
@@ -13,7 +13,7 @@ const chatWithGemini = async (
     systemInstruction: options?.system || "You are a helpful assistant",
   });
 
-  const result = await model.generateContent(prompt);
+  const result = await model.generateContent(typeof prompt === 'string' ? prompt : JSON.stringify(prompt));
   return {
     text: result.response.text(),
   };

@@ -1,16 +1,19 @@
 interface AIConfig {
-    provider: 'openai' | "gemini" | "anthropic";
-    apiKey: string;
-    model?: string;
+  provider: "openai" | "gemini" | "anthropic";
+  apiKey: string;
+  model?: string;
 }
 
 interface AIResponse {
-    text: string;
+  text: string;
 }
 
 interface RequestOptions {
-    model?: string;
-    system?: string;
+  model?: string;
+  system?: string;
+  optimize?: boolean;
 }
 
-export {AIConfig, AIResponse, RequestOptions}
+export type PromptInput = string | object | any[]
+
+export { AIConfig, AIResponse, RequestOptions };
